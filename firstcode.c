@@ -13,7 +13,7 @@
 
 // void va_start(va_list ap, last_arg);
 
-void print(int num, ...)
+void print(const char *num, ...)
 {
 	va_list args;
 	va_start(args, num);
