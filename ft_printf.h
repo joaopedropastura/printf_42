@@ -6,7 +6,7 @@
 /*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:16:08 by jpedro-s          #+#    #+#             */
-/*   Updated: 2021/11/23 20:19:50 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:09:51 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #include "libft/libft.h"
 
 int ft_printf(const char *format, ...);
-int type_flag(va_list args, const char *format);
+int ft_type(va_list args, const char *format);
 
 #endif

@@ -6,13 +6,18 @@
 /*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 20:58:48 by jpedro-s          #+#    #+#             */
-/*   Updated: 2021/11/23 10:52:06 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2021/11/25 12:37:19 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
 #include<stdarg.h>
 #include<unistd.h>
+
+int ft_type_c(int chr)
+{
+	return(write(1, &chr, 1));
+}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -23,20 +28,20 @@ char	*ft_strchr(const char *s, int c)
 	{
 		if (s[i] == (unsigned char )c)
 			return ((char *)&s[i]);
-		i ++;
+		i++;
 	}
 	if (c == '\0')
 		return ((char *)&s[i]);
 	return (NULL);
 }
 
-int type_flag(va_list args, const char *format)
+int ft_type(va_list args, const char *format)
 {
-	char flag;
+	char type;
 
-	flag = *ft_strchr("cspdiuxX%", *format);
-	if(flag == 'c')
-		return (write(1, args, 1));
+	type = *ft_strchr("cspdiuxX%", *format);
+	if(type == 'c')
+		return (ft_type_c(va_arg(args, int)));
 	return (0);
 }
 
@@ -52,7 +57,8 @@ int ft_printf(const char *format, ...)
 		if(*format == '%')
 		{
 			format++;
-			len += type_flag(args, format);
+			len += ft_type(args, format);
+			format++;
 		}
 		else
 		{
@@ -68,7 +74,8 @@ int main(void)
 {
 	int a;
 	printf("%s\n", "mac");
-	a = ft_printf("%c\n", 'o');
+	a = ft_printf("%c%c%c%c%c\n", 'm', 'a', 'c', 'l', 'a');
+
 }
 
 // printf("macarrao%s")
