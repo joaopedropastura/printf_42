@@ -6,17 +6,25 @@
 /*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 20:58:48 by jpedro-s          #+#    #+#             */
-/*   Updated: 2021/11/25 12:37:19 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2021/11/26 11:01:37 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
 #include<stdarg.h>
 #include<unistd.h>
+#include<string.h>
 
-int ft_type_c(int chr)
+size_t	ft_strlen(const char *s)
 {
-	return(write(1, &chr, 1));
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -35,6 +43,18 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
+int ft_type_c(int chr)
+{
+	return(write(1, &chr, 1));
+}
+
+int ft_type_s(char *str)
+{
+	if (!str)
+		return (write(1, "(null)", 6));
+	return (write(1, str, strlen(str)));
+}
+
 int ft_type(va_list args, const char *format)
 {
 	char type;
@@ -42,6 +62,8 @@ int ft_type(va_list args, const char *format)
 	type = *ft_strchr("cspdiuxX%", *format);
 	if(type == 'c')
 		return (ft_type_c(va_arg(args, int)));
+	if(type == 's')
+		return (ft_type_s(va_arg(args, char *)));
 	return (0);
 }
 
@@ -73,9 +95,11 @@ int ft_printf(const char *format, ...)
 int main(void)
 {
 	int a;
-	printf("%s\n", "mac");
-	a = ft_printf("%c%c%c%c%c\n", 'm', 'a', 'c', 'l', 'a');
-
+	char *b = "paoComCarneE4Queijo";
+	// printf("%c%c%c%c%c\n", 'm', 'a', 'c', 'l', 'a');
+	// a = ft_printf("%c%c%c%c%c\n", 'm', 'a', 'c', 'l', 'a');
+	printf("%c\n%s\n", 'a', b);
+	ft_printf("%c\n%s\n", 'a', b);
+	write(1, b, strlen(b));
 }
 
-// printf("macarrao%s")
