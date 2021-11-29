@@ -6,7 +6,7 @@
 /*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:16:08 by jpedro-s          #+#    #+#             */
-/*   Updated: 2021/11/29 10:45:38 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:39:37 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int ft_type_c(int chr);
 int ft_type_s(char *str);
 int	ft_type_p(unsigned long int ptr);
 int ft_type_diu(int nbr, char type);
-int	ft_type_Xx(int to_hex, char type);
+int	ft_type_Xx(unsigned int to_hex, char type);
 
 #endif
